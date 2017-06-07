@@ -1,0 +1,34 @@
+
+
+# options a,b,c require args, d and e do not
+
+FLAG_D=''
+FLAG_E=''
+
+#set -v
+
+while getopts a:b:c:de arg
+do
+	case $arg in
+		a) ARG_A=$OPTARG
+			echo A: $ARG_A;;
+		b) ARG_B=$OPTARG
+			echo B: $ARG_B;;
+		c) ARG_C=$OPTARG
+			echo C: $ARG_C;;
+		d) FLAG_D='TRUE'
+			echo FLAG D: $FLAG_D;;
+		e) FLAG_E='TRUE'
+			echo FLAG E: $FLAG_E;;
+		*) echo "invalid argument specified"; usage;exit 1;
+	esac
+
+done
+
+echo '========================'
+echo A: $ARG_A
+echo B: $ARG_B
+echo C: $ARG_C
+echo FLAG D: $FLAG_D
+echo FLAG E: $FLAG_E
+
